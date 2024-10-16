@@ -1,6 +1,8 @@
 
 NAME := vais-widget-app
 
+CONFIG_ID := $(CONFIG_ID)
+
 
 .PHONY: deploy
 deploy:
@@ -14,8 +16,8 @@ deploy:
 	--ingress=internal-and-cloud-load-balancing \
 	--no-default-url \
 	--service-account=$(NAME)@$(PROJECT_ID).iam.gserviceaccount.com \
-	--session-affinity \
 	--cpu-boost \
+	--set-env-vars=CONFIG_ID=$(CONFIG_ID) \
 	--allow-unauthenticated
 
 .PHONY: sa
