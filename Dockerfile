@@ -11,4 +11,4 @@ RUN poetry install
 # USER nobody
 ENV PYTHONUNBUFFERED=on
 
-CMD ["poetry", "run", "chainlit", "run", "main.py", "--port=8080", "--host=0.0.0.0", "--headless"]
+CMD ["poetry", "run", "uvicorn", "--host=0.0.0.0", "--port=8080", "--workers=8", "main:app"]
